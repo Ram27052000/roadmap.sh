@@ -1,0 +1,17 @@
+[
+{
+  "id": 1,
+  "description": "Read all tasks",
+  "status": "In-Progress",
+  "createdAt": "2026-02-16T11:58:09.968397700",
+  "updatedAt": "2026-02-16T11:58:09.968397700"
+}
+,
+{
+  "id": 2,
+  "description": "Get",
+  "status": "To-Do",
+  "createdAt": "2026-02-16T11:58:18.605158",
+  "updatedAt": "2026-02-16T11:58:18.605158"
+}
+]

@@ -7,17 +7,16 @@ public class Task {
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
 
-    public Task(int id, String description, String status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Task(int id, String description, String status) {
         this.id = id;
         this.description = description;
         this.status = status;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
-    @Override
-    public String toString() {
-        return "Task{id=" + id + ", description='" + description + "', status='" + status +
-               "', createdAt=" + createdAt + ", updatedAt=" + updatedAt + "}";
+    public String toString(){
+        return "TaskId: " +id + " " + "TaskDescription: "  +description + " " + "Status: " +status + " " +
+               "CreatedAt: " +createdAt + " " + "UpdatedAt: " +updatedAt;
     }
 }

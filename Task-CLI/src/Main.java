@@ -25,11 +25,12 @@ public class Main {
         }
     }
 
-    static Task updateTask() {
+    static void updateTask() {
         System.out.println("***** Update Task *****");
         System.out.println("Enter Task Id:");
         Scanner sc = new Scanner(System.in);
         int taskId = sc.nextInt();
+        sc.nextLine();
         for (Task task : tasks) {
             if (task.getId() == taskId) {
                 System.out.println("Enter Task description:");
@@ -38,11 +39,9 @@ public class Main {
                 String taskStatus = sc.nextLine();
                 task.setDescription(taskDescription);
                 task.setStatus(taskStatus);
-                return task;
             }
         }
         System.out.println("Task not found.");
-        return null;
     }
 
     static List<Task> deleteTask() {
@@ -86,12 +85,13 @@ public class Main {
                     listTasks();
                     break;
                 case 3:
-                    Task updatedTask = updateTask();
-                    tasks.add(updatedTask);
+                    updateTask();
+                    listTasks();
                     break;
                 case 4:
                     List <Task> updatedTasks = deleteTask();
-                    tasks.addAll(updatedTasks);
+                    listTasks();
+                    break;
             }
             if (choice == 5) {
                 break;

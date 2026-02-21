@@ -2,79 +2,75 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+class Main {
 
-    private static final List<Task> tasks = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+    static List<Task> tasks = new ArrayList<>();
 
     static Task addTask() {
-        System.out.println("***** Add Task *****");
-        System.out.println("Enter Task Id:");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter taskid: ");
         int taskId = sc.nextInt();
         sc.nextLine();
-        System.out.println("Enter Task description:");
+        System.out.println("Enter task description: ");
         String taskDescription = sc.nextLine();
-        System.out.println("Enter Task Status:");
+        System.out.println("Enter task status: ");
         String taskStatus = sc.nextLine();
-        return new Task(taskId, taskDescription, taskStatus);
+        return new Task(taskId, taskStatus, taskDescription);
     }
 
     static void listTasks() {
-        for (Task task : tasks) {
-            System.out.println(task);
+        if (tasks.isEmpty()) {
+            System.out.println("No task to show");
+        } else {
+            for (Task task : tasks) {
+                System.out.println(task);
+            }
         }
     }
 
     static void updateTask() {
-        System.out.println("***** Update Task *****");
-        System.out.println("Enter Task Id:");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter taskId to update: ");
+        boolean found  = false;
         int taskId = sc.nextInt();
         sc.nextLine();
         for (Task task : tasks) {
             if (task.getId() == taskId) {
-                System.out.println("Enter Task description:");
+                System.out.println("Enter task description: ");
                 String taskDescription = sc.nextLine();
-                System.out.println("Enter Task Status:");
+                System.out.println("Enter task status: ");
                 String taskStatus = sc.nextLine();
                 task.setDescription(taskDescription);
                 task.setStatus(taskStatus);
+                found = true;
             }
         }
-        System.out.println("Task not found.");
+        if (! found) {
+            System.out.println("No task to update");
+        }
     }
 
-    static List<Task> deleteTask() {
-        System.out.println("***** Delete Task *****");
-        System.out.println("Enter Task Id:");
-        Scanner sc = new Scanner(System.in);
+    static void deleteTask() {
+        System.out.println("Enter taskId to delete: ");
         int taskId = sc.nextInt();
-        int indexToRemove = -1;
-        for (int i=0; i<tasks.size(); i++) {
-            if (tasks.get(i).getId() == taskId) {
-                indexToRemove = i;
-                break;
-            }
-        }
-        if (indexToRemove != -1) {
-            tasks.remove(indexToRemove);
-            System.out.println("Task deleted.");
+        boolean removed = tasks.removeIf(task -> task.getId() == taskId);
+        if(removed){
+            System.out.println("Task has been deleted");
         }
         else{
-            System.out.println("Task not found");
+            System.out.println("Task could not be deleted");
         }
-        return tasks;
     }
 
+
     public static void main(String[] args) {
+
         while (true) {
-            System.out.println("***** Enter one of the following option *****");
-            System.out.println("Press 1: Add Task");
-            System.out.println("Press 2: List All the tasks");
-            System.out.println("Press 3: Update Task");
-            System.out.println("Press 4: Delete Task");
-            System.out.println("Press 5: Exit");
-            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter one of the following options");
+            System.out.println("1.Add Task");
+            System.out.println("2.Get All tasks");
+            System.out.println("3.Update tasks");
+            System.out.println("4.Delete tasks");
+            System.out.println("5.Exit");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -86,16 +82,18 @@ public class Main {
                     break;
                 case 3:
                     updateTask();
-                    listTasks();
                     break;
                 case 4:
-                    List <Task> updatedTasks = deleteTask();
-                    listTasks();
+                    deleteTask();
+                    break;
+                case 5:
+                    System.out.println("Good Bye!");
                     break;
             }
-            if (choice == 5) {
+            if(choice == 5){
                 break;
             }
         }
+        sc.close();
     }
 }

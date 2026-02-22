@@ -14,7 +14,7 @@ Created & Updated timestamps
 
 Persistent storage using Storage-data.json
 
-2.) **🌐 GitHub Integration**
+2.) **🌐 GitHub Integration**: **https://roadmap.sh/projects/github-user-activity**
 
 Fetches recent GitHub events using GitHub REST API
 

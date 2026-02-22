@@ -1,4 +1,4 @@
-**Task Manager (CLI)**
+1.) **Task Manager (CLI)**
 
 Add, update, delete tasks by ID
 
@@ -14,7 +14,7 @@ Created & Updated timestamps
 
 Persistent storage using Storage-data.json
 
-**🌐 GitHub Integration**
+2.) **🌐 GitHub Integration**
 
 Fetches recent GitHub events using GitHub REST API
 

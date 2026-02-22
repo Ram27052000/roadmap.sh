@@ -1,23 +1,29 @@
-# Java Task Manager
+**Task Manager (CLI)**
 
-A simple command-line app to add, list, update, and delete tasks.
+Add, update, delete tasks by ID
 
-## Usage
+List tasks by status
 
-1. Compile:  
-   javac src/*.java
+Each task contains:
 
-2. Run:  
-   java -cp src Main
+Description
 
-## Features
+Status
 
-- Add, list, update, and delete tasks by ID
-- Each task has a description, status, and timestamps
+Created & Updated timestamps
 
-## Requirements
+Persistent storage using Storage-data.json
 
-- Java 8+
+**🌐 GitHub Integration**
 
-###
-Project URL: https://roadmap.sh/projects/task-tracker
+Fetches recent GitHub events using GitHub REST API
+
+Displays:
+
+Push events (commits pushed to repositories)
+
+Create events (new repositories, branches, or tags)
+
+Uses Java built-in HttpClient
+
+Parses JSON using json-simple
